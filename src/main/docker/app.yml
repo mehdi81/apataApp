@@ -1,0 +1,14 @@
+version: '2'
+services:
+    apataapp-app:
+        image: apataapp
+        environment:
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://apataapp-mysql:3306/apataapp?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+        ports:
+            - 8080:8080
+    apataapp-mysql:
+        extends:
+            file: mysql.yml
+            service: apataapp-mysql
